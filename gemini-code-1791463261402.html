@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رشدي على السريع | ROSHDY</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-blue: #0A58FF;
+        --bg-purple: #B066FF;
+        --card-bg: #FFFFFF;
+        --text-main: #0A58FF;
+        --text-dark: #1A1A1A;
+        --accent-purple: #8B3EE5;
+        --border-color: #0A58FF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: var(--bg-blue);
+        color: #fff;
+        overflow-x: hidden;
+        background-image: 
+            linear-gradient(rgba(10, 88, 255, 0.85), rgba(10, 88, 255, 0.85)),
+            repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.15) 30px, rgba(255,255,255,0.15) 31px),
+            repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.15) 30px, rgba(255,255,255,0.15) 31px);
+    }
+
+    .container { width: min(950px, calc(100% - 24px)); margin: auto; }
+
+    /* الهيدر والخط الساخن */
+    .top-banner {
+        background: var(--bg-purple);
+        border: 4px solid #fff;
+        text-align: center;
+        padding: 18px;
+        margin: 15px auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+    }
+    .hotline-num {
+        font-size: clamp(35px, 8vw, 55px);
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 3px 3px 0 var(--bg-blue);
+        letter-spacing: 2px;
+    }
+    .hotline-sub {
+        font-size: 16px;
+        font-weight: 700;
+        background: #fff;
+        color: var(--bg-purple);
+        display: inline-block;
+        padding: 4px 18px;
+        border-radius: 20px;
+        margin-top: 5px;
+    }
+
+    /* البانر الرئيسي */
+    .hero {
+        text-align: center;
+        padding: 30px 10px;
+    }
+    .main-title {
+        font-size: clamp(45px, 10vw, 75px);
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 4px 4px 0 #000;
+        margin-bottom: 10px;
+    }
+
+    /* أقسام المنيو */
+    .menu-section {
+        background: var(--card-bg);
+        color: var(--text-dark);
+        border: 5px solid var(--bg-blue);
+        border-radius: 20px;
+        padding: 20px 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .section-header {
+        background: var(--bg-blue);
+        color: #fff;
+        text-align: center;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: clamp(22px, 5vw, 32px);
+        font-weight: 900;
+        margin-bottom: 20px;
+        border: 3px solid #fff;
+        box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    @media(min-width: 650px) {
+        .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px 25px; }
+    }
+
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F4EEFF;
+        padding: 12px 15px;
+        border-radius: 12px;
+        border: 2px solid #D5BFFF;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .menu-item:hover {
+        transform: translateY(-2px);
+        background: #E8D8FF;
+        border-color: var(--bg-purple);
+    }
+    .item-name {
+        font-weight: 700;
+        font-size: 15px;
+        color: #1A1A1A;
+    }
+    .item-price {
+        font-weight: 900;
+        font-size: 16px;
+        background: var(--bg-blue);
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 8px;
+    }
+
+    /* بوكسات العروض */
+    .box-card {
+        background: var(--bg-purple);
+        border: 3px solid #fff;
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 15px;
+        color: #fff;
+        box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+    }
+    .box-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px dashed rgba(255,255,255,0.4);
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+    .box-name { font-size: 20px; font-weight: 900; }
+    .box-price { font-size: 22px; font-weight: 900; background: #fff; color: var(--bg-purple); padding: 2px 12px; border-radius: 8px; }
+    .box-desc { font-size: 13px; font-weight: 600; line-height: 1.6; }
+
+    /* تفاصيل الفروع */
+    .branches-box {
+        background: var(--bg-purple);
+        border: 4px solid #fff;
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .branch-item {
+        margin: 12px 0;
+        font-size: 15px;
+        font-weight: 700;
+        background: rgba(255,255,255,0.15);
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* السلة العائمة وزر الواتساب */
+    .cart-fab {
+        position: fixed; z-index: 80; bottom: 20px; left: 20px;
+        width: 60px; height: 60px; border: 3px solid #fff; border-radius: 50%;
+        background: #25D366; color: #fff; box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        font-size: 26px; cursor: pointer; display: none; align-items: center; justify-content: center;
+    }
+    .cart-fab.show { display: flex; }
+    .cart-count {
+        position: absolute; top: -5px; right: -5px; background: #FF0055; color: #fff;
+        border: 2px solid #fff; border-radius: 50%; width: 24px; height: 24px;
+        font-size: 11px; display: grid; place-items: center; font-weight: 900;
+    }
+
+    .cart-panel {
+        position: fixed; z-index: 90; inset: 0; background: rgba(0,0,0,0.75);
+        backdrop-filter: blur(5px); display: none; align-items: flex-end; justify-content: center;
+    }
+    .cart-panel.open { display: flex; }
+    .cart-box {
+        width: min(550px, 100%); max-height: 90vh; background: #fff; color: #1A1A1A;
+        border-radius: 24px 24px 0 0; padding: 20px; overflow: auto; box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    }
+    .cart-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .cart-head h3 { font-size: 22px; color: var(--bg-blue); font-weight: 900; }
+    .cart-close { border: 0; background: #eee; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 18px; }
+    
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .qty-box { display: flex; gap: 8px; align-items: center; }
+    .qty-box button { border: 0; width: 26px; height: 26px; background: var(--bg-blue); color: #fff; border-radius: 50%; cursor: pointer; font-weight: bold; }
+
+    .order-form { display: grid; gap: 10px; margin-top: 15px; }
+    .order-form input, .order-form select, .order-form textarea {
+        width: 100%; border: 2px solid #ccc; border-radius: 10px; padding: 10px; font: inherit; outline: none;
+    }
+    .wa-btn {
+        width: 100%; border: 0; border-radius: 12px; background: #25D366; color: #fff;
+        padding: 14px; font-weight: 900; cursor: pointer; font-size: 16px; margin-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- الهيدر والخط الساخن -->
+    <div class="top-banner">
+        <div class="hotline-num">16282</div>
+        <div class="hotline-sub">الخط الساخن — السبيس للجدعان</div>
+    </div>
+
+    <div class="hero">
+        <h1 class="main-title">رُشدي</h1>
+        <p style="font-weight:700; font-size:18px; text-shadow: 2px 2px 0 rgba(0,0,0,0.3);">على السريع ⚡</p>
+    </div>
+
+    <!-- قسم السندوتشات -->
+    <div class="menu-section">
+        <div class="section-header">هنا السندوتشات</div>
+        <div class="menu-grid" id="sandwichesGrid">
+            <!-- يتم تعبئتها ديناميكياً -->
+        </div>
+    </div>
+
+    <!-- قسم الشاورما والمشويات -->
+    <div class="menu-section">
+        <div class="section-header">الشاورما والمشويات</div>
+        <div class="menu-grid" id="shawarmaGrid"></div>
+    </div>
+
+    <!-- قسم البوكسات -->
+    <div class="menu-section">
+        <div class="section-header">البوكسات المدمرة</div>
+        <div id="boxesContainer"></div>
+    </div>
+
+    <!-- قسم زود وادعيلي (بطاسات وتكس) -->
+    <div class="menu-section">
+        <div class="section-header">زود وادعيلي 🍟</div>
+        <div class="menu-grid" id="friesGrid"></div>
+    </div>
+
+    <!-- قسم مينفعش من غيرهم -->
+    <div class="menu-section">
+        <div class="section-header">مينفعش من غيرهم</div>
+        <div class="menu-grid" id="extrasGrid"></div>
+    </div>
+
+    <!-- قسم الحلو والحلويات -->
+    <div class="menu-section">
+        <div class="section-header">الحلو للحلو 🍰</div>
+        <div class="menu-grid" id="dessertGrid"></div>
+    </div>
+
+    <!-- قسم الأيس كريم والميلك شيكس -->
+    <div class="menu-section">
+        <div class="section-header">آيس كريم وميلك شيكس 🍦</div>
+        <div class="menu-grid" id="icecreamGrid"></div>
+    </div>
+
+    <!-- قسم المشروبات والمرطبات -->
+    <div class="menu-section">
+        <div class="section-header">المرطبات والمشروبات الباردة 🥤</div>
+        <div class="menu-grid" id="drinksGrid"></div>
+    </div>
+
+    <!-- الفروع -->
+    <div class="branches-box">
+        <h3 style="font-size:24px; margin-bottom:12px; font-weight:900;">📍 عناوين الفروع</h3>
+        <div class="branch-item">📍 chill out، شارع الجيش، المنصورة[cite: 3]</div>
+        <div class="branch-item">📍 أمام جامعة المنصورة، شارع جيهان، المنصورة[cite: 3]</div>
+        <div class="branch-item">📍 أمام فندق رمادا، المشاية، المنصورة[cite: 3]</div>
+    </div>
+
+</div>
+
+<!-- زر السلة العائم -->
+<button class="cart-fab" id="cartFab" aria-label="السلة">
+    🛒<span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- نافذة السلة والطلب -->
+<div class="cart-panel" id="cartPanel">
+    <div class="cart-box">
+        <div class="cart-head">
+            <h3>سلة طلبات رُشدي</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div id="cartItems"></div>
+        
+        <div id="cartSummary" style="display:none; margin-top:15px;">
+            <div class="order-form">
+                <div>
+                    <label style="font-size:12px; font-weight:700;">اسم العميل:</label>
+                    <input type="text" id="customerName" placeholder="اكتب اسمك هنا">
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:700;">رقم الموبايل:</label>
+                    <input type="tel" id="customerPhone" placeholder="010xxxxxxxx">
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:700;">الفرع القريب:</label>
+                    <select id="branchSelect">
+                        <option value="فرع شارع الجيش (Chill out)">فرع شارع الجيش (Chill out)</option>
+                        <option value="فرع جامعة المنصورة (شارع جيهان)">فرع جامعة المنصورة (شارع جيهان)</option>
+                        <option value="فرع المشاية (أمام فندق رمادا)">فرع المشاية (أمام فندق رمادا)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:700;">نوع الطلب:</label>
+                    <select id="orderType">
+                        <option value="دليفري (توصيل)">دليفري (توصيل)</option>
+                        <option value="استلام من الفرع">استلام من الفرع</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:700;">العنوان بالتفصيل:</label>
+                    <textarea id="customerAddress" placeholder="المنطقة، الشارع، رقم العمارة..."></textarea>
+                </div>
+            </div>
+
+            <div style="margin-top:15px; border-top:2px dashed #ccc; padding-top:10px; font-size:18px; font-weight:900; display:flex; justify-content:space-between;">
+                <span>الإجمالي الكلي:</span>
+                <span id="cartTotal" style="color:var(--bg-blue);">0 جنيه</span>
+            </div>
+
+            <button class="wa-btn" id="sendWhatsApp">إرسال الطلب عبر واتساب 📲</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // قاعدة بيانات المنيو الكاملة بدقة من الصور المرفقة
+    const menuData = {
+        sandwiches: [
+            { name: "كبدة", price: 38 },
+            { name: "سجق", price: 38 },
+            { name: "شيش", price: 43 },
+            { name: "تندوري", price: 50 },
+            { name: "كفتة", price: 45 },
+            { name: "صدور", price: 45 },
+            { name: "سويس", price: 36 },
+            { name: "برجر ⚡", price: 45 },
+            { name: "جمبري", price: 70 },
+            { name: "سويت تشيلي كرانشي", price: 48 },
+            { name: "سجق جبنة", price: 43 },
+            { name: "شيش جبنة", price: 48 },
+            { name: "كرانشي رانشي", price: 50 },
+            { name: "كوردون بلو", price: 53 },
+            { name: "رغيف حواوشي لحمة", price: 40 },
+            { name: "رغيف حواوشي جبنة ⚡", price: 50 }
+        ],
+        shawarma: [
+            { name: "شاورما لحمة مصري", price: 40 },
+            { name: "كباب حلة", price: 45 },
+            { name: "لحمة بالجبنة من الآخر", price: 48 },
+            { name: "الحلو", price: 25 },
+            { name: "شاورما تشيز ستيك ⚡", price: 55 }
+        ],
+        boxes: [
+            { name: "بوكس الحنين", price: 130, desc: "1 كفتة - 1 كبدة - 1 سجق - 1 حلو - 1 بطاطس" },
+            { name: "بوكس الفشيم", price: 365, desc: "1 كفتة - 1 كبدة - 1 سجق - 1 شيش - 1 كرانشي رانشي - 1 صدور - 1 بطاطس - 1 حلو - حاجة ساقعة" },
+            { name: "بوكس اللمة الحلوة", price: 390, desc: "3 شاورما لحمة - 3 حواوشي - 1 كفتة - 1 كبدة - 1 سجق - بطاطس - لتر حاجة ساقعة" }
+        ],
+        fries: [
+            { name: "بطاطس محمرة", price: 25 },
+            { name: "بطاطس محمرة بالجبنة", price: 60 },
+            { name: "بطاطس تكساس سجق", price: 90 },
+            { name: "بطاطس تكساس كرانشي", price: 125 },
+            { name: "بطاطس تكساس جمبري", price: 160 }
+        ],
+        extras: [
+            { name: "طحينة", price: 15 },
+            { name: "مخلل", price: 12 },
+            { name: "كول سلو", price: 15 },
+            { name: "زود جبنة", price: 15 },
+            { name: "زود شيدر", price: 17 }
+        ],
+        dessert: [
+            { name: "تريليتشي كراميل", price: 80 },
+            { name: "براونيز مانجو", price: 70 },
+            { name: "سوفت أيس كريم", price: 35 }
+        ],
+        icecream: [
+            { name: "كوكيز ليمون", price: 80 },
+            { name: "كيوي", price: 75 },
+            { name: "بلوبيري", price: 75 },
+            { name: "يوسفي", price: 80 }
+        ],
+        drinks: [
+            { name: "مياه معدنية", price: 12 },
+            { name: "حاجة ساقعة", price: 25 },
+            { name: "لتر حاجة ساقعة", price: 45 },
+            { name: "مانجو فريش", price: 35 },
+            { name: "رايب فراولة كيوي", price: 65 },
+            { name: "رايب خوخ", price: 65 },
+            { name: "رايب باشن فروت", price: 60 },
+            { name: "موهيتو بيناكولادا", price: 70 },
+            { name: "موهيتو باشن فروت", price: 70 },
+            { name: "بلو كوراساو", price: 70 }
+        ]
+    };
+
+    let cart = JSON.parse(localStorage.getItem('roshdyCart') || '{}');
+    const WHATSAPP_NUM = '201500576313';
+
+    function renderCategory(containerId, items, isBox = false) {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        
+        if(isBox) {
+            container.innerHTML = items.map(item => `
+                <div class="box-card">
+                    <div class="box-title-row">
+                        <span class="box-name">${item.name}</span>
+                        <span class="box-price">${item.price} ج.م</span>
+                    </div>
+                    <div class="box-desc">${item.desc}</div>
+                    <button onclick="addBoxToCart('${item.name}', ${item.price})" style="margin-top:10px; background:#fff; color:var(--bg-purple); border:0; padding:8px 15px; border-radius:8px; font-weight:900; cursor:pointer;">اطلب البوكس 🛒</button>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = items.map(item => `
+                <div class="menu-item" onclick="addToCart('${item.name}', ${item.price})">
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">${item.price} ج.م</span>
+                </div>
+            `).join('');
+        }
+    }
+
+    // تعبئة الأقسام
+    renderCategory('sandwichesGrid', menuData.sandwiches);
+    renderCategory('shawarmaGrid', menuData.shawarma);
+    renderCategory('boxesContainer', menuData.boxes, true);
+    renderCategory('friesGrid', menuData.fries);
+    renderCategory('extrasGrid', menuData.extras);
+    renderCategory('dessertGrid', menuData.dessert);
+    renderCategory('icecreamGrid', menuData.icecream);
+    renderCategory('drinksGrid', menuData.drinks);
+
+    function addToCart(name, price) {
+        if(cart[name]) {
+            cart[name].qty++;
+        } else {
+            cart[name] = { name, price, qty: 1 };
+        }
+        updateCart();
+    }
+
+    function addBoxToCart(name, price) {
+        addToCart(name, price);
+    }
+
+    function changeQty(name, delta) {
+        if(!cart[name]) return;
+        cart[name].qty += delta;
+        if(cart[name].qty <= 0) delete cart[name];
+        updateCart();
+    }
+    window.changeQty = changeQty;
+
+    function updateCart() {
+        localStorage.setItem('roshdyCart', JSON.stringify(cart));
+        const entries = Object.values(cart);
+        const totalCount = entries.reduce((sum, i) => sum + i.qty, 0);
+        
+        const fab = document.getElementById('cartFab');
+        const countEl = document.getElementById('cartCount');
+        countEl.textContent = totalCount;
+        fab.classList.toggle('show', totalCount > 0);
+
+        const itemsEl = document.getElementById('cartItems');
+        const summaryEl = document.getElementById('cartSummary');
+
+        if(!entries.length) {
+            itemsEl.innerHTML = '<p style="text-align:center; padding:20px; color:#777;">السلة فاضية، اختر أكلتك من رُشدي!</p>';
+            summaryEl.style.display = 'none';
+            return;
+        }
+
+        summaryEl.style.display = 'block';
+        let totalSum = 0;
+        itemsEl.innerHTML = entries.map(item => {
+            totalSum += item.price * item.qty;
+            return `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small style="color:#666;">${item.price} ج.م × ${item.qty}</small>
+                    </div>
+                    <div class="qty-box">
+                        <button onclick="changeQty('${item.name}', -1)">-</button>
+                        <span><b>${item.qty}</b></span>
+                        <button onclick="changeQty('${item.name}', 1)">+</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('cartTotal').textContent = totalSum + ' جنيه';
+    }
+
+    document.getElementById('cartFab').addEventListener('click', () => document.getElementById('cartPanel').classList.add('open'));
+    document.getElementById('cartClose').addEventListener('click', () => document.getElementById('cartPanel').classList.remove('open'));
+    document.getElementById('cartPanel').addEventListener('click', e => { if(e.target === event.currentTarget) e.currentTarget.classList.remove('open'); });
+
+    document.getElementById('sendWhatsApp').addEventListener('click', () => {
+        const name = document.getElementById('customerName').value.trim();
+        const phone = document.getElementById('customerPhone').value.trim();
+        const branch = document.getElementById('branchSelect').value;
+        const type = document.getElementById('orderType').value;
+        const address = document.getElementById('customerAddress').value.trim();
+        const entries = Object.values(cart);
+
+        if(!name || !phone) {
+            alert('من فضلك اكتب الاسم ورقم الموبايل.');
+            return;
+        }
+        if(type === 'دليفري (توصيل)' && !address) {
+            alert('من فضلك اكتب عنوان التوصيل بالتفصيل.');
+            return;
+        }
+
+        let msg = `⚡ *طلب جديد من رُشدي على السريع* ⚡\n\n`;
+        msg += `👤 الاسم: *${name}*\n`;
+        msg += `📞 الهاتف: *${phone}*\n`;
+        msg += `🏬 الفرع: *${branch}*\n`;
+        msg += `📦 النوع: *${type}*\n`;
+        if(type === 'دليفري (توصيل)') msg += `📍 العنوان: *${address}*\n`;
+        msg += `----------------------------------\n*الأصناف المطلوبة:*\n`;
+
+        let total = 0;
+        entries.forEach((i, index) => {
+            msg += `${index + 1}. ${i.name} × ${i.qty} — *${i.price * i.qty} ج.م*\n`;
+            total += i.price * i.qty;
+        });
+
+        msg += `----------------------------------\n`;
+        msg += `💰 *الإجمالي النهائي: ${total} جنيه*\n\n`;
+        msg += `الخط الساخن: 16282`;
+
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=` + encodeURIComponent(msg), '_blank');
+        cart = {};
+        updateCart();
+        document.getElementById('cartPanel').classList.remove('open');
+    });
+
+    updateCart();
+</script>
+</body>
+</html>
