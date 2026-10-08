@@ -9,10 +9,9 @@
     :root {
         --bg-blue: #0A58FF;
         --bg-purple: #B066FF;
-        --card-bg: rgba(255, 255, 255, 0.95);
+        --card-bg: rgba(255, 255, 255, 0.96);
         --text-main: #1A1A1A;
         --text-muted: #666;
-        --border-color: rgba(10, 88, 255, 0.2);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,14 +22,15 @@
         color: #fff;
         overflow-x: hidden;
         background-image: 
-            linear-gradient(rgba(10, 88, 255, 0.9), rgba(10, 88, 255, 0.9)),
-            repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 31px),
-            repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 31px);
+            linear-gradient(rgba(10, 88, 255, 0.88), rgba(10, 88, 255, 0.88)),
+            repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.12) 30px, rgba(255,255,255,0.12) 31px),
+            repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.12) 30px, rgba(255,255,255,0.12) 31px);
+        background-size: cover;
     }
 
     .container { width: min(1180px, calc(100% - 30px)); margin: auto; }
 
-    /* الهيدر والخط الساخن */
+    /* الهيدر المتحرك والخط الساخن */
     .top-banner {
         background: var(--bg-purple);
         border: 4px solid #fff;
@@ -38,33 +38,32 @@
         padding: 15px;
         margin: 20px auto 10px;
         border-radius: 16px;
-        box-shadow: 0 8px 0 rgba(0,0,0,0.25);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: pulseBanner 3s infinite alternate;
+    }
+    @keyframes pulseBanner {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.01); }
     }
     .hotline-num {
-        font-size: clamp(32px, 7vw, 50px);
+        font-size: clamp(35px, 8vw, 55px);
         font-weight: 900;
         color: #fff;
         text-shadow: 3px 3px 0 var(--bg-blue);
         letter-spacing: 2px;
     }
-    .hotline-sub {
-        font-size: 15px;
-        font-weight: 700;
-        background: #fff;
-        color: var(--bg-purple);
-        display: inline-block;
-        padding: 4px 16px;
-        border-radius: 20px;
-        margin-top: 5px;
-    }
 
-    .hero { text-align: center; padding: 25px 10px; }
+    .hero { text-align: center; padding: 30px 10px; position: relative; overflow: hidden; }
     .main-title {
-        font-size: clamp(45px, 9vw, 80px);
+        font-size: clamp(50px, 11vw, 90px);
         font-weight: 900;
         color: #fff;
-        text-shadow: 4px 4px 0 #000;
-        margin-bottom: 5px;
+        text-shadow: 5px 5px 0 #000;
+        animation: floatTitle 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes floatTitle {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-8px); }
     }
 
     /* أقسام المنيو والفلتر */
@@ -73,7 +72,7 @@
         background: var(--bg-purple);
         color: #fff;
         text-align: center;
-        padding: 12px;
+        padding: 14px;
         border-radius: 14px;
         font-size: clamp(20px, 4vw, 28px);
         font-weight: 900;
@@ -93,7 +92,7 @@
         background: var(--bg-purple); color: #fff; transform: translateY(-2px);
     }
 
-    /* شبكة الكروت الاحترافية (متجاوبة تماماً مثل داون تاون) */
+    /* شبكة الكروت الاحترافية المتجاوبة */
     .products {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -131,7 +130,7 @@
     }
     .price-row button:hover { background: var(--bg-purple); transform: scale(1.15); }
 
-    /* Modal نافذة تفاصيل الصنف والإضافات (نفس داون تاون الاحترافي) */
+    /* Modal نافذة تفاصيل الصنف والإضافات */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(6px); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 15px; }
     .modal-content { background: #fff; color: #1A1A1A; border: 4px solid var(--bg-purple); border-radius: 24px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
     .modal-img { height: 220px; width: 100%; position: relative; overflow: hidden; }
@@ -205,7 +204,6 @@
     <!-- الهيدر والخط الساخن -->
     <div class="top-banner">
         <div class="hotline-num">16282</div>
-        <div class="hotline-sub">الخط الساخن — السبيس للجدعان</div>
     </div>
 
     <div class="hero">
@@ -215,7 +213,7 @@
 
     <!-- قسم المنيو مع الفلتر الاحترافي -->
     <div class="section" id="menu">
-        <div class="section-header">بلييست رُشدي (المنيو الكامل) 🎵</div>
+        <div class="section-header">بلاي ليست رُشدي 🎵</div>
 
         <div class="menu-tabs">
             <button class="tab-btn active" onclick="filterMenu('all', this)">الكل 🌟</button>
@@ -240,7 +238,7 @@
 
 </div>
 
-<!-- Modal نافذة تفاصيل الصنف (نفس داون تاون الاحترافي) -->
+<!-- Modal نافذة تفاصيل الصنف -->
 <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
   <div class="modal-content">
     <button class="close-modal" onclick="closeModalDirect()">&times;</button>
@@ -331,49 +329,54 @@
 </div>
 
 <script>
-// قاعدة بيانات المنيو الكاملة لرُشدي مع الصور الاحترافية لكل صنف والإضافات
+// قاعدة بيانات المنيو مُحدثة بالصور الرسمية التي أرسلتها للمطعم
 const menuData = [
     // السندوتشات
     { id: 1, category: 'sandwiches', name: "كبدة", price: 38, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80", desc: "كبدة اسكندراني طازجة بخلطة رُشدي المميزة.", addons: [{name: "طحينة زيادة", price: 5}, {name: "إكسترا فلفل حار", price: 3}] },
     { id: 2, category: 'sandwiches', name: "سجق", price: 38, img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80", desc: "سجق بلدي بالخلطة الشرقية والبهارات الفواحة.", addons: [{name: "صوص جبنة", price: 10}] },
     { id: 3, category: 'sandwiches', name: "شيش", price: 43, img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&auto=format&fit=crop&q=80", desc: "أصابع شيش طاووق مشوية بصوص الثومية.", addons: [{name: "ثومية إضافية", price: 5}] },
-    { id: 4, category: 'sandwiches', name: "تندوري", price: 50, img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80", desc: "دجاج تندوري ببهارات هندية سبايسي.", addons: [{name: "جبنة شيدر", price: 10}] },
+    { id: 4, category: 'sandwiches', name: "تندوري", price: 50, img: "537022515_762659949791937_3087189983105932439_n.jpg", desc: "التندوري الجديد بطعم مميز وخطير[cite: 25]!", addons: [{name: "جبنة شيدر", price: 10}] },
     { id: 5, category: 'sandwiches', name: "كفتة", price: 45, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80", desc: "كفتة ضاني مشوية على الفحم بطعم حكاية.", addons: [{name: "طحينة", price: 5}] },
-    { id: 6, category: 'sandwiches', name: "صدور", price: 45, img: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&auto=format&fit=crop&q=80", desc: "صدور دجاج جريل طرية ومتبلة.", addons: [{name: "مشروم", price: 10}] },
-    { id: 7, category: 'sandwiches', name: "سويس", price: 36, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80", desc: "سندوتش سويس خفيف وسريع.", addons: [] },
+    { id: 6, category: 'sandwiches', name: "صدور", price: 45, img: "558947898_808369475220984_673359048331581819_n.jpg", desc: "صدور دجاج جريل طرية ومتبلة[cite: 24].", addons: [{name: "مشروم", price: 10}] },
+    { id: 7, category: 'sandwiches', name: "سوسيس", price: 36, img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80", desc: "سندوتش سوسيس خفيف وسريع[cite: 11].", addons: [] },
     { id: 8, category: 'sandwiches', name: "برجر ⚡", price: 45, img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&auto=format&fit=crop&q=80", desc: "برجر لحم صافي مع صوص رُشدي الخاص.", addons: [{name: "جبنة شيدر", price: 10}, {name: "بيف بيكون", price: 15}] },
     { id: 9, category: 'sandwiches', name: "جمبري", price: 70, img: "https://images.unsplash.com/photo-1565680368489-40f6e147d637?w=600&auto=format&fit=crop&q=80", desc: "جمبري مقرمش بصوص الترتار.", addons: [{name: "صوص سي فود", price: 10}] },
-    { id: 10, category: 'sandwiches', name: "سويت تشيلي كرانشي", price: 48, img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600&auto=format&fit=crop&q=80", desc: "دجاج كرانشي بصوص السويت تشيلي الحلو الحار.", addons: [{name: "جبنة مذابة", price: 10}] },
+    { id: 10, category: 'sandwiches', name: "سويت تشيلي كرانشي", price: 48, img: "721209379_3072279569633885_223779241059693789_n.jpg", desc: "السويت شيلي المهاري الخطير[cite: 17].", addons: [{name: "جبنة مذابة", price: 10}] },
     { id: 11, category: 'sandwiches', name: "سجق جبنة", price: 43, img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80", desc: "سجق بلدي غارق في الجبن المذَاب.", addons: [{name: "إكسترا جبنة", price: 15}] },
     { id: 12, category: 'sandwiches', name: "شيش جبنة", price: 48, img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&auto=format&fit=crop&q=80", desc: "شيش طاووق مع مزيج الجبن السايل.", addons: [{name: "موتزاريلا", price: 12}] },
-    { id: 13, category: 'sandwiches', name: "كرانشي رانشي", price: 50, img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80", desc: "دجاج مقرمش مع صوص الرانشي الغني.", addons: [{name: "هالبينو", price: 5}] },
-    { id: 14, category: 'sandwiches', name: "كوردون بلو", price: 53, img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=600&auto=format&fit=crop&q=80", desc: "كوردون بلو محشو بالدخان والجبن.", addons: [] },
+    { id: 13, category: 'sandwiches', name: "كرانشي رانشي", price: 50, img: "596239560_850088114382453_9152505276235908992_n.jpg", desc: "الكرانشي رانشي (أجمد منه مفيش)[cite: 22]!", addons: [{name: "هالبينو", price: 5}] },
+    { id: 14, category: 'sandwiches', name: "كوردون بلو", price: 53, img: "558947898_808369475220984_673359048331581819_n.jpg", desc: "كوردون بلو محشو بالدخان والجبن[cite: 24].", addons: [] },
     { id: 15, category: 'sandwiches', name: "رغيف حواوشي لحمة", price: 40, img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=80", desc: "حواوشي لحمة بلدي في رغيف محمص عالفحم.", addons: [{name: "طحينة", price: 5}] },
     { id: 16, category: 'sandwiches', name: "رغيف حواوشي جبنة ⚡", price: 50, img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=80", desc: "حواوشي لحمة مع طبقة جبنة مكس ضخمة.", addons: [{name: "إكسترا جبنة", price: 15}] },
+    { id: 161, category: 'sandwiches', name: "سندوتش بانيه", price: 42, img: "758264877_1028364949917396_257383104212809401_n.jpg", desc: "سندوتش بانيه مقرمش بصوص المايونيز والخلطة[cite: 15].", addons: [{name: "جبنة شيدر", price: 10}] },
 
     // الشاورما والمشويات
     { id: 17, category: 'shawarma', name: "شاورما لحمة مصري", price: 40, img: "https://images.unsplash.com/photo-1529042298742-ac78e6a2290e?w=600&auto=format&fit=crop&q=80", desc: "شاورما لحمة بلدي على الطريقة المصرية الأصلية.", addons: [{name: "طحينة", price: 5}] },
-    { id: 18, category: 'shawarma', name: "كباب حلة", price: 45, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80", desc: "لحمة كباب حلة دايبة في صوص البصل المسمل.", addons: [] },
+    { id: 18, category: 'shawarma', name: "كباب حلة", price: 45, img: "558947898_808369475220984_673359048331581819_n.jpg", desc: "لحمة كباب حلة دايبة في صوص البصل المسمل[cite: 24].", addons: [] },
     { id: 19, category: 'shawarma', name: "لحمة بالجبنة من الآخر", price: 48, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80", desc: "قطع اللحم الطرية مغطاة بجبنة شيدر وموتزاريلا.", addons: [{name: "هالبينو", price: 5}] },
     { id: 20, category: 'shawarma', name: "الحلو", price: 25, img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&auto=format&fit=crop&q=80", desc: "سندوتش الحلو السريع المميز.", addons: [] },
     { id: 21, category: 'shawarma', name: "شاورما تشيز ستيك ⚡", price: 55, img: "https://images.unsplash.com/photo-1529042298742-ac78e6a2290e?w=600&auto=format&fit=crop&q=80", desc: "شاورما لحمة مع صوص الجبن والستيك الفاخر.", addons: [{name: "مشروم", price: 10}] },
+    { id: 211, category: 'shawarma', name: "السجق اللعيب", price: 50, img: "720676197_2096527981295348_887750222562091041_n.jpg", desc: "السجق اللعيب بخلطة رُشدي المميزة[cite: 18].", addons: [{name: "جبنة", price: 10}] },
+    { id: 212, category: 'shawarma', name: "فاهيتا فراخ", price: 48, img: "775357792_1114529147670440_9131893457774761465_n.jpg", desc: "فاهيتا دجاج بصوص مميز وطعم خطير[cite: 16].", addons: [{name: "مشروم", price: 10}] },
 
     // البوكسات المدمرة
-    { id: 22, category: 'boxes', name: "بوكس الحنين", price: 130, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80", desc: "يتكون من: 1 كفتة - 1 كبدة - 1 سجق - 1 حلو - 1 بطاطس.", addons: [] },
-    { id: 23, category: 'boxes', name: "بوكس الفشيم", price: 365, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80", desc: "يتكون من: 1 كفتة - 1 كبدة - 1 سجق - 1 شيش - 1 كرانشي رانشي - 1 صدور - بطاطس - حلو - حاجة ساقعة.", addons: [] },
-    { id: 24, category: 'boxes', name: "بوكس اللمة الحلوة", price: 390, img: "https://images.unsplash.com/photo-1529042298742-ac78e6a2290e?w=600&auto=format&fit=crop&q=80", desc: "يتكون من: 3 شاورما لحمة - 3 حواوشي - 1 كفتة - 1 كبدة - 1 سجق - بطاطس - لتر حاجة ساقعة.", addons: [] },
+    { id: 22, category: 'boxes', name: "بوكس الحنين", price: 130, img: "603817804_860271193364145_8638224725481866862_n.jpg", desc: "يتكون من: 1 كفتة - 1 كبدة - 1 سجق - 1 حلو - 1 بطاطس (تصميم بوكس الكاسيت)[cite: 23].", addons: [] },
+    { id: 23, category: 'boxes', name: "بوكس الفشيم", price: 365, img: "603817804_860271193364145_8638224725481866862_n.jpg", desc: "يتكون من: 1 كفتة - 1 كبدة - 1 سجق - 1 شيش - 1 كرانشي رانشي - 1 صدور - بطاطس - حلو - حاجة ساقعة (النسيم محتاج لمة حلوة)[cite: 23].", addons: [] },
+    { id: 24, category: 'boxes', name: "بوكس اللمة الحلوة", price: 390, img: "603817804_860271193364145_8638224725481866862_n.jpg", desc: "يتكون من: 3 شاورما لحمة - 3 حواوشي - 1 كفتة - 1 كبدة - 1 سجق - بطاطس - لتر حاجة ساقعة[cite: 23].", addons: [] },
 
-    // زود وادعيلي (بطاطس وتكساس)
+    // زود وادعيلي
     { id: 25, category: 'fries', name: "بطاطس محمرة", price: 25, img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80", desc: "بطاطس ذهبية مقرمشة.", addons: [{name: "كاتشب إضافي", price: 3}] },
     { id: 26, category: 'fries', name: "بطاطس محمرة بالجبنة", price: 60, img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=80", desc: "بطاطس مقرمشة مغطاة بصوص الجبن السايل.", addons: [{name: "هالبينو", price: 5}] },
     { id: 27, category: 'fries', name: "بطاطس تكساس سجق", price: 90, img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=80", desc: "بطاطس مع قطع السجق البلدي والجبن.", addons: [] },
-    { id: 28, category: 'fries', name: "بطاطس تكساس كرانشي", price: 125, img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=80", desc: "بطاطس مع قطع الدجاج الكرانشي وال صوصات.", addons: [] },
+    { id: 28, category: 'fries', name: "بطاطس تكساس كرانشي", price: 125, img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=80", desc: "بطاطس مع قطع الدجاج الكرانشي والصوصات.", addons: [] },
     { id: 29, category: 'fries', name: "بطاطس تكساس جمبري", price: 160, img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=80", desc: "بطاطس مكس تكساس مع الجمبري المقرمش.", addons: [] },
 
     // الحلو للحلو
-    { id: 30, category: 'dessert', name: "تريليتشي كراميل", price: 80, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&auto=format&fit=crop&q=80", desc: "كيك الحليب التركي بصوص الكراميل الغني.", addons: [{name: "صوص نوتيلا إضافي", price: 10}] },
-    { id: 31, category: 'dessert', name: "براونيز مانجو", price: 70, img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80", desc: "براونيز شوكولاتة مع قطع المانجو الطازجة.", addons: [] },
-    { id: 32, category: 'dessert', name: "سوفت أيس كريم", price: 35, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80", desc: "آيس كريم سوفت فانيليا ناعم.", addons: [{name: "زود صوص (نوتيلا/كراميل/لوتس)", price: 5}] },
+    { id: 30, category: 'dessert', name: "تريليتشي كراميل", price: 80, img: "750402835_2075367179726601_2578893330557946960_n.jpg", desc: "كيك الحليب التركي بصوص الكراميل والمكسرات[cite: 12].", addons: [{name: "صوص نوتيلا إضافي", price: 10}] },
+    { id: 301, category: 'dessert', name: "أرز باللبن", price: 45, img: "748264931_1537237201187510_2873158616541928463_n.jpg", desc: "أرز باللبن كريمي وخطير بخلطة رُشدي[cite: 13].", addons: [{name: "مكسرات", price: 10}] },
+    { id: 302, category: 'dessert', name: "كنافة رُشدي الفاخرة", price: 85, img: "645489160_913229711401626_4726153730144608722_n.jpg", desc: "كنافة مقرمشة مغطاة بآيس كريم وصوصات[cite: 27].", addons: [{name: "قشطة", price: 15}] },
+    { id: 31, category: 'dessert', name: "براونيز مانجو", price: 70, img: "749269146_1191717613137164_1215193421528936975_n.jpg", desc: "براونيز مع طبقات مانجو غنية في علب كان رُشدي المبتكرة[cite: 14].", addons: [] },
+    { id: 32, category: 'dessert', name: "سوفت أيس كريم", price: 35, img: "632723620_18032242193786088_2263230980324869006_n.jpg", desc: "آيس كريم سوفت في عبوات كان رُشدي المميزة[cite: 19].", addons: [{name: "زود صوص (نوتيلا/كراميل/لوتس)", price: 5}] },
 
     // المرطبات والمشروبات
     { id: 33, category: 'drinks', name: "مياه معدنية", price: 12, img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&auto=format&fit=crop&q=80", desc: "زجاجة مياه نقية.", addons: [] },
@@ -413,7 +416,6 @@ function renderProducts(cat = 'all') {
   });
 }
 
-// نافذة تفاصيل الصنف والإضافات (مودال داون تاون الاحترافي)
 let activeProduct = null;
 function openProductModal(id) {
   activeProduct = menuData.find(p => p.id === id);
@@ -482,7 +484,6 @@ document.getElementById('modalAddBtn').addEventListener('click', () => {
   closeModalDirect();
 });
 
-// سلة الطلبات والواتساب
 const WHATSAPP_NUMBER = '201500576313';
 let cart = JSON.parse(localStorage.getItem('roshdyCart') || '{}');
 
